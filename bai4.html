@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra số nguyên tố</title>
+</head>
+<link rel="stylesheet" href="stye.css">
+<body>
+    <div class="decorative-frame">
+    <div class="container">
+        <h1>Bài 4:Kiểm tra số nguyên tố</h1>
+        <input type="number" id="n" placeholder="Nhập số n">
+        <br>
+        <button onclick="kiemTraSoNguyenTo()">Kết Quả</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function kiemTraSoNguyenTo() //Đây là hàm được gọi khi người dùng nhấn nút "Kết quả".
+        {
+            const n = parseInt(document.getElementById('n').value); //Lấy giá trị từ ô nhập liệu (input) và chuyển nó thành số nguyên
+            //Biến isPrime được dùng để lưu trạng thái của số n (giả định ban đầu là n là số nguyên tố).
+            let isPrime = true; 
+            //Nếu số n nhỏ hơn 2, nó không phải là số nguyên tố, nên isPrime = false.
+            if (n < 2) {
+                isPrime = false;
+            } else {
+                //Vòng lặp bắt đầu từ 2 đến căn bậc hai của n 
+                //(vì nếu số n chia hết cho một số lớn hơn căn bậc hai của nó thì nó cũng chia hết cho một số nhỏ hơn căn bậc hai).
+                for (let i = 2; i <= Math.sqrt(n); i++) {
+                    //Nếu tìm thấy bất kỳ số nào trong khoảng từ 2 đến căn bậc hai mà n chia hết, điều đó có nghĩa là n không phải là số nguyên tố. 
+                    if (n % i === 0) {
+                        isPrime = false; //Do đó, isPrime = false và vòng lặp kết thúc sớm nhờ break.
+                        break;
+                    }
+                }
+            }
+            if (isPrime) {
+                  //Nếu biến isPrime là true, tức là n là số nguyên tố, hiển thị thông báo "n là số nguyên tố".
+                document.getElementById('result').innerText = `${n} là số nguyên tố.`; 
+                ////Nếu isPrime là false, hiển thị thông báo "n không phải là số nguyên tố".
+                document.getElementById('result').innerText = `${n} không phải là số nguyên tố.`;
+            }
+        }
+    </script>
+    <div class="links"></div>
+        <a href="bai1.html">Trở về để xem bài tiếp theo</a> 
+    </div>
+</body>
+</html>

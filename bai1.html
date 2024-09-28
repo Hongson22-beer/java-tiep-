@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tổng từ 1 đến n</title>
+</head>
+<link rel="stylesheet" href="stye.css">
+<body>
+    <div class="decorative-frame">
+    <div class="container">
+        <h1> Bài 1: Tính tổng từ 1 đến n</h1>
+        <input type="number" id="n" placeholder="Nhập số n">
+        <br>
+        <button onclick="tinhTong()">Kết Quả</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        // Hàm tính tổng từ 1 đến n
+        function tinhTong() //Khi người dùng nhấn nút "Tính tổng", hàm này được gọi.
+        {
+            const n = parseInt(document.getElementById('n').value);
+
+            if (isNaN(n) || n < 1) // Kiểm tra xem n có phải là số nguyên dương hay không. Nếu n nhỏ hơn 1 (ví dụ, 0 hoặc số âm), cũng coi như giá trị không hợp lệ.
+            {
+                document.getElementById('result').innerText = 'Vui lòng nhập một số nguyên dương hợp lệ!';
+            } else {
+                let sum = 0; //lưu giữ tổng của các số từ 1 đến n.
+                //Sau mỗi lần lặp, giá trị của i++ sẽ tăng thêm 1.
+                for (let i = 1; i <= n; i++) //Vòng lặp sẽ bắt đầu với i = 1 và tiếp tục lặp cho đến khi i bằng n
+                {
+                    sum += i; //Tại mỗi lần lặp, giá trị của i sẽ được cộng vào biến sum, rồi tổng lại.
+                }
+                document.getElementById('result').innerText = `Tổng từ 1 đến ${n} là: ${sum}`;//${n}: Giá trị của n.
+                //${sum}: Kết quả tổng mà ta vừa tính.
+            }
+        }
+    </script>
+ <div class="links">
+    <a href="bai2.html"> Xem bài 2</a>
+    <a href="bai3.html">Xem bài 3</a>
+    <a href="bai4.html">Xem bài 4</a>
+    <a href="bai5.html">Xem bài 5</a>
+</div>
+</body>
+</html>

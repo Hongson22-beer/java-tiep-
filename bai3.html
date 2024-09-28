@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính tổng các số lẻ</title>
+</head>
+<link rel="stylesheet" href="stye.css">
+<body>
+    <div class="decorative-frame">
+    <div class="container">
+        <h1>Bài 3:Tính tổng các số lẻ từ 1 đến n</h1>
+        <input type="number" id="n" placeholder="Nhập số n">
+        <br>
+        <button onclick="tinhTongLe()">kết quả</button>
+        <p id="result"></p>
+    </div>
+    <script>
+        function tinhTongLe() ////Đây là hàm được gọi khi người dùng nhấn nút "Kết Quả". 
+        {
+            const n = parseInt(document.getElementById('n').value); ////Lấy giá trị từ ô nhập liệu và chuyển nó thành số nguyên.
+            let tong = 0;
+             // Tính tổng số lẻ từ 1 đến n
+            for (let i = 1; i <= n; i += 2) //Vòng lặp chạy từ 1 đến n, mỗi lần nhảy qua một số (tăng i thêm 2), chỉ cộng các số lẻ
+            {
+                tong += i; // //Cộng các số lẻ lại để tính tổng.
+            }
+            // Hiển thị Kết quả
+            document.getElementById('result').innerText = `Tổng các số lẻ từ 1 đến ${n} là: ${tong}`;
+        }
+    </script>
+    <div class="links"></div>
+        <a href="bai1.html">Trở về để xem bài tiếp theo</a> 
+    </div>
+</body>
+</html>

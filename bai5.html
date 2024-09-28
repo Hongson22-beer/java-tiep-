@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm UCLN của hai số</title>
+</head>
+<link rel="stylesheet" href="stye.css">
+<body>
+    <div class="decorative-frame">
+    <div class="container">
+        <h1>Bài 5:Tìm UCLN của hai số</h1>
+        <input type="number" id="a" placeholder="Nhập số a">
+        <input type="number" id="b" placeholder="Nhập số b">
+        <br>
+        <button onclick="timUCLN()">Kết quả</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        // Hàm tính UCLN
+        function ucln(a, b) //UCLN của hai số a và b bằng UCLN của b và phần dư khi chia a cho b. Khi phần dư là 0, kết quả là số còn lại.
+        {
+            while (b != 0) // Tiếp tục lặp cho đến khi b bằng 0
+            {
+                let temp = b; // Lưu tạm giá trị của b
+                b = a % b; // b được gán bằng phần dư của a chia cho b
+                a = temp; // a được gán bằng giá trị cũ của b (trước khi b thay đổi)
+            }
+            return a; // Khi b bằng 0, giá trị của a là UCLN
+        }
+
+        // Hàm gọi khi nhấn nút "Kết quả"
+        function timUCLN() {
+            const a = parseInt(document.getElementById('a').value);// Lấy giá trị của số a từ ô nhập liệu và chuyển thành số nguyên
+            const b = parseInt(document.getElementById('b').value);// Lấy giá trị của số b từ ô nhập liệu và chuyển thành số nguyên
+            // Kiểm tra nếu người dùng không nhập số hoặc nhập giá trị không hợp lệ
+            if (isNaN(a) || isNaN(b)) {
+                document.getElementById('result').innerText = 'Vui lòng nhập hai số hợp lệ!';
+            } else {
+                 // Gọi hàm ucln() để tính UCLN của a và b
+                const result = ucln(a, b);
+                document.getElementById('result').innerText = `UCLN của ${a} và ${b} là: ${result}`;
+            }
+        }
+    </script>
+    <div class="links"></div>
+        <a href="bai1.html">Trở về để xem bài tiếp theo</a> 
+    </div>
+</body>
+</html>
